@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const validation_1 = require("../middlewares/validation");
-const sharp_1 = require("../middlewares/sharp");
-const routes = express_1.default.Router();
-routes.get('/api/images', validation_1.validateHieght, validation_1.validateWidth, validation_1.validateFileName, sharp_1.resizeImageAndSave);
-routes.get('*', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(404);
-    res.send(`Page is not Found`);
-}));
-exports.default = routes;
+const index_1 = __importDefault(require("../../index"));
+const supertest_1 = __importDefault(require("supertest"));
+const request = (0, supertest_1.default)(index_1.default);
+describe('Test routes/index default endpints /', () => {
+    it('Get / endpoint should return 404 Page is not Found', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/');
+        expect(response.status).toBe(404);
+        expect(response.text).toBe(`Page is not Found`);
+    }));
+});

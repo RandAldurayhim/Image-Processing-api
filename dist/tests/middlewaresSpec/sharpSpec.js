@@ -12,13 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const validation_1 = require("../middlewares/validation");
-const sharp_1 = require("../middlewares/sharp");
-const routes = express_1.default.Router();
-routes.get('/api/images', validation_1.validateHieght, validation_1.validateWidth, validation_1.validateFileName, sharp_1.resizeImageAndSave);
-routes.get('*', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(404);
-    res.send(`Page is not Found`);
-}));
-exports.default = routes;
+const index_1 = __importDefault(require("../../index"));
+const supertest_1 = __importDefault(require("supertest"));
+const request = (0, supertest_1.default)(index_1.default);
+describe('Test src/middlewares/sharp.ts endpints /api/images', () => {
+    describe('fileName tests:', () => {
+        it('Get /api/images?hieght=100&width=100&fileName=encenadaport endpoint should return 200 new resized image', () => __awaiter(void 0, void 0, void 0, function* () {
+            const response = yield request.get('/api/images?hieght=100&width=100&fileName=encenadaport');
+            expect(response.status).toBe(200);
+            expect(response.text).toBe(`<img src= "/thumb/encenadaport-100-100.jpg" />`);
+        }));
+    });
+});

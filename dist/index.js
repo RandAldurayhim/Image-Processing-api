@@ -7,7 +7,9 @@ const express_1 = __importDefault(require("express"));
 const routes_1 = __importDefault(require("./routes"));
 const app = (0, express_1.default)();
 const port = 3000;
-app.use('/api', routes_1.default);
+app.use(express_1.default.static('assets'));
+app.use('/', routes_1.default);
 app.listen(port, () => {
-    console.log(`Server listening on port ${port} !`);
+    console.log(`Server is listening on localhost:${port} !`);
 });
+exports.default = app;
