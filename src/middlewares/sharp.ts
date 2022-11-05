@@ -1,8 +1,11 @@
 import sharp from 'sharp';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import path from 'path';
 
-export const resizeImageAndSave = async (req: Request, res: Response) => {
+export const resizeImageAndSave = async (
+  req: Request,
+  res: Response
+): Promise<Response<string>> => {
   const imagePath = path.join(
     __dirname,
     '../../../Image-Processing-api/assets/full',

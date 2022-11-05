@@ -6,7 +6,7 @@ export const validateHieght = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<Response<string> | void> => {
   const hieght: number = req.query.hieght as unknown as number;
   if (!hieght) {
     return res.status(400).send('Hieght is a required query parameter!');
@@ -23,7 +23,7 @@ export const validateWidth = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<Response<string> | void> => {
   const width: number = req.query.width as unknown as number;
   if (!width) {
     return res.status(400).send('width is a required query parameter!');
@@ -40,7 +40,7 @@ export const validateFileName = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<Response<string> | void> => {
   const imagePath = path.join(
     __dirname,
     '../../../Image-Processing-api/assets/full',

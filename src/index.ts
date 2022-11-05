@@ -6,7 +6,7 @@ const port = 3000;
 app.use(express.static('assets'));
 app.use('/', routes);
 
-app.listen(port, () => {
+app.listen(port, (): void => {
   console.log(`Server is listening on localhost:${port} !`);
 });
 export default app;
