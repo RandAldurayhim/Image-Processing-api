@@ -14,13 +14,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = __importDefault(require("../../index"));
 const supertest_1 = __importDefault(require("supertest"));
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 const request = (0, supertest_1.default)(index_1.default);
 describe('Test src/middlewares/sharp.ts endpints /api/images', () => {
     describe('fileName tests:', () => {
         it('Get /api/images?hieght=100&width=100&fileName=encenadaport endpoint should return 200 new resized image', () => __awaiter(void 0, void 0, void 0, function* () {
+            const generatedImagePath = path_1.default.join(__dirname, '../../../assets/thumb', 'encenadaport-100-100.jpg');
+            console.log(generatedImagePath);
             const response = yield request.get('/api/images?hieght=100&width=100&fileName=encenadaport');
             expect(response.status).toBe(200);
             expect(response.text).toBe(`<img src= "/thumb/encenadaport-100-100.jpg" />`);
+            //remove the genrated photo to allow re-test
+            fs_1.default.unlink(generatedImagePath, (err) => {
+                if (err)
+                    throw err;
+                console.log(generatedImagePath, ' was deleted');
+            });
         }));
     });
 });
