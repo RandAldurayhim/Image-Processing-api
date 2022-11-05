@@ -48,9 +48,9 @@ const validateWidth = (req, res, next) => __awaiter(void 0, void 0, void 0, func
 });
 exports.validateWidth = validateWidth;
 const validateFileName = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const imagePath = path_1.default.join(__dirname, '../../../Image-Processing-api/assets/full', `${req.query.fileName}.jpg`);
+    const imagePath = path_1.default.join(__dirname, '../../assets/full', `${req.query.fileName}.jpg`);
     const processedImageFileName = `${req.query.fileName}-${req.query.hieght}-${req.query.width}.jpg`;
-    const processedImagePath = path_1.default.join(__dirname, '../../../Image-Processing-api/assets/thumb', processedImageFileName);
+    const processedImagePath = path_1.default.join(__dirname, '../../assets/thumb', processedImageFileName);
     if (!req.query.fileName) {
         return res.status(400).send('fileName is a required query parameter!');
     }

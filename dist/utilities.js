@@ -12,18 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resizeImageAndSave = void 0;
-const path_1 = __importDefault(require("path"));
-const utilities_1 = require("../utilities");
-const resizeImageAndSave = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const imagePath = path_1.default.join(__dirname, '../../assets/full', `${req.query.fileName}.jpg`);
-    const processedImageFileName = `${req.query.fileName}-${req.query.hieght}-${req.query.width}.jpg`;
-    const processedImagePath = path_1.default.join(__dirname, '../../assets/thumb', processedImageFileName);
-    const hieght = parseInt(req.query.hieght);
-    const width = parseInt(req.query.width);
-    yield (0, utilities_1.resizeImage)(imagePath, processedImagePath, hieght, width);
-    return res
-        .status(200)
-        .send(`<img src= "/thumb/${processedImageFileName}" />`);
+exports.resizeImage = void 0;
+const sharp_1 = __importDefault(require("sharp"));
+const resizeImage = (imagePath, processedImagePath, hieght, width) => __awaiter(void 0, void 0, void 0, function* () {
+    yield (0, sharp_1.default)(imagePath).resize(hieght, width).toFile(processedImagePath);
 });
-exports.resizeImageAndSave = resizeImageAndSave;
+exports.resizeImage = resizeImage;

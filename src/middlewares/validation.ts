@@ -43,14 +43,14 @@ export const validateFileName = async (
 ): Promise<Response<string> | void> => {
   const imagePath = path.join(
     __dirname,
-    '../../../Image-Processing-api/assets/full',
+    '../../assets/full',
     `${req.query.fileName}.jpg`
   );
 
   const processedImageFileName = `${req.query.fileName}-${req.query.hieght}-${req.query.width}.jpg`;
   const processedImagePath = path.join(
     __dirname,
-    '../../../Image-Processing-api/assets/thumb',
+    '../../assets/thumb',
     processedImageFileName
   );
   if (!req.query.fileName) {
