@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Response } from 'express';
 import {
   validateFileName,
   validateHieght,
@@ -15,9 +15,8 @@ routes.get(
   resizeImageAndSave
 );
 
-routes.get('*', async (req: express.Request, res: express.Response) => {
-  res.status(404);
-  res.send(`Page is not Found`);
+routes.get('*', async (res: Response) => {
+  res.status(404).send(`Page is not Found`);
 });
 
 export default routes;
