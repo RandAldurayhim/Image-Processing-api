@@ -23,7 +23,6 @@ describe('Test src/middlewares/sharp.ts endpints /api/images', () => {
       );
       //remove the genrated photo to allow re-test
 
-      
       fs.unlink(generatedImagePath, (err) => {
         if (err) throw err;
         console.log(generatedImagePath, ' was deleted');
