@@ -64,7 +64,7 @@ npm run prettier
 
 ### Typescript transpiling
 
-The backend code is delivered through the `./src` folder, and the transformed output is placed under `./dist.
+The backend code is delivered through the `./src` folder, and the transformed output is placed under `./dist`
 You can execute the command below:
 
 ```bash
