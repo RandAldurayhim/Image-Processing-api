@@ -19,10 +19,12 @@ After installing the dependencies, building and executing the project, the endpo
 
 ### Full example
 
-Considering the app running at port 3000 on your local environment, you can access the following endpoints
+Considering the app running at port 3000 on your local environment, you can access the following endpoint
 
 
-* Getting the encenadaport image with 100x100size - [http://localhost:3000/api/images?hieght=100&width=100&fileName=encenadaport]
+* Getting the encenadaport image with 100x100size -
+ [http://localhost:3000/api/images?hieght=100&width=100&fileName=encenadaport](http://localhost:3000/api/images?hieght=100&width=100&fileName=encenadaport)
+
 
 
 
