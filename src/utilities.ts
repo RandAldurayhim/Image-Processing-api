@@ -5,6 +5,6 @@ export const resizeImage = async (
   processedImagePath: string,
   hieght: number,
   width: number
-) => {
+): Promise<void> | never => {
   await sharp(imagePath).resize(hieght, width).toFile(processedImagePath);
 };

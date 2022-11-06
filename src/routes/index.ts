@@ -15,7 +15,7 @@ routes.get(
   resizeImageAndSave
 );
 
-routes.get('*', (req:Request,res: Response) => {
+routes.get('*', (req: Request, res: Response) => {
   return res.status(404).send('Page is not Found');
 });
 
